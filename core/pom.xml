@@ -163,6 +163,11 @@
       <artifactId>jsr311-api</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.hierynomus</groupId>
+      <artifactId>smbj</artifactId>
+      <version>0.2.0</version>
+    </dependency>
   </dependencies>
 
   <properties>

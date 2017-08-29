@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/commons-vfs.iml" filepath="$PROJECT_DIR$/.idea/commons-vfs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/commons-vfs2.iml" filepath="$PROJECT_DIR$/core/commons-vfs2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dist/commons-vfs2-distribution.iml" filepath="$PROJECT_DIR$/dist/commons-vfs2-distribution.iml" />
+      <module fileurl="file://$PROJECT_DIR$/examples/commons-vfs2-examples.iml" filepath="$PROJECT_DIR$/examples/commons-vfs2-examples.iml" />
+    </modules>
+  </component>
+</project>
