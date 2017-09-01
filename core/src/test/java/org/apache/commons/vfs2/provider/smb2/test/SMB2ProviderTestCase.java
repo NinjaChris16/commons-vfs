@@ -20,9 +20,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 public class SMB2ProviderTestCase extends AbstractProviderTestConfig implements ProviderTestConfig {
-    private static String serverName = "";  // The server name for testing purposes
-    private static String userInfo = ""; // The domain\user:password combo for logging in to server
-    private static String folderPath = ""; // The path to the root folder for testing purposes beginning with the share name
+    private static String serverName = "sd-test";  // The server name for testing purposes
+    private static String userInfo = "WORKGROUP\\user:easypass"; // The domain\\user:password combo for logging in to server
+    private static String folderPath = "/share/folder"; // The path to the root folder for testing purposes beginning with the share name
     //private static String TEST_URI = "";
 
     final TestSuite suite = new TestSuite();

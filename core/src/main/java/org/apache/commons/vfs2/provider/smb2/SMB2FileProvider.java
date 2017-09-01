@@ -15,6 +15,8 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class SMB2FileProvider extends AbstractOriginatingFileProvider {
+    private SMB2FileSystem fileSystem;
+
     private static final UserAuthenticationData.Type[] AUTHENTICATOR_TYPES = new UserAuthenticationData.Type[] {
             UserAuthenticationData.USERNAME, UserAuthenticationData.PASSWORD
     };
@@ -34,7 +36,6 @@ public class SMB2FileProvider extends AbstractOriginatingFileProvider {
 
     @Override
     public FileObject findFile(final FileObject baseFile, final String stringURI, final FileSystemOptions fileSystemOptions) throws FileSystemException {
-        // Parse the URI
         FileName name;
         final URI Uri;
 
@@ -46,8 +47,15 @@ public class SMB2FileProvider extends AbstractOriginatingFileProvider {
             throw new FileSystemException("vfs.provider/invalid-absolute-uri.error", stringURI, exc);
         }
 
+        if(fileSystem == null) {
+
+            doCreateFileSystem(Uri, null);
+        }
+        // TODO add case if baseFile is null
+
         // Locate the file
-        return baseFile.resolveFile(name.getPath());
+        return fileSystem.resolveFile(Uri.getPath());
+        //return baseFile.resolveFile(name.getPath());
     }
 
     @Override
@@ -58,11 +66,21 @@ public class SMB2FileProvider extends AbstractOriginatingFileProvider {
             authData = UserAuthenticatorUtils.authenticate(fileSystemOptions, AUTHENTICATOR_TYPES); // TODO use this to abstract authentication
             URI uri = new URI(name.getURI());
             DiskShare smbClient = SMB2ClientFactory.createConnection(uri.getHost(), uri.getUserInfo().substring(0, uri.getUserInfo().indexOf(":")), uri.getUserInfo().substring(uri.getUserInfo().indexOf(":")+1), name.getPath());
-            return new SMB2FileSystem(name, smbClient, fileSystemOptions);
+            fileSystem = new SMB2FileSystem(name, smbClient, fileSystemOptions);
+            return fileSystem;
         } catch (final URISyntaxException e) {
             System.out.printf("%s\n", e.getMessage());
             throw new FileSystemException("vfs.provider.smb2/connect.error", name, e);
         }
+    }
+
+    protected FileSystem doCreateFileSystem(URI uri, FileSystemOptions fileSystemOptions) throws FileSystemException {
+        UserAuthenticationData authData = new UserAuthenticationData();
+
+        authData = UserAuthenticatorUtils.authenticate(fileSystemOptions, AUTHENTICATOR_TYPES); // TODO use this to abstract authentication
+        DiskShare smbClient = SMB2ClientFactory.createConnection(uri.getHost(), uri.getUserInfo().substring(0, uri.getUserInfo().indexOf(":")), uri.getUserInfo().substring(uri.getUserInfo().indexOf(":")+1), uri.getPath().substring(0, uri.getPath().indexOf("/", 1)));
+        fileSystem = new SMB2FileSystem(new SMB2FileName(uri, FileType.FILE_OR_FOLDER), smbClient, fileSystemOptions);
+        return fileSystem;
     }
 
     @Override
