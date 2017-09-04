@@ -75,7 +75,7 @@ public class SMB2FileProvider extends AbstractOriginatingFileProvider {
         UserAuthenticationData authData = new UserAuthenticationData();
 
         authData = UserAuthenticatorUtils.authenticate(fileSystemOptions, AUTHENTICATOR_TYPES); // TODO use this to abstract authentication
-        DiskShare smbClient = SMB2ClientFactory.createConnection(uri.getHost(), uri.getUserInfo().substring(0, uri.getUserInfo().indexOf(":")), uri.getUserInfo().substring(uri.getUserInfo().indexOf(":")+1), uri.getPath().substring(0, uri.getPath().indexOf("/", 1)));
+        DiskShare smbClient = SMB2ClientFactory.createConnection(uri.getHost(), uri.getUserInfo().substring(0, uri.getUserInfo().indexOf(":")), uri.getUserInfo().substring(uri.getUserInfo().indexOf(":")+1), uri.getPath().substring(1, uri.getPath().indexOf("/", 1)));
         fileSystem = new SMB2FileSystem(new SMB2FileName(uri, FileType.FILE_OR_FOLDER), smbClient, fileSystemOptions);
         return fileSystem;
     }

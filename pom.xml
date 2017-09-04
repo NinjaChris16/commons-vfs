@@ -448,7 +448,7 @@
       <dependency>
         <groupId>com.hierynomus</groupId>
         <artifactId>smbj</artifactId>
-        <version>0.0.8</version>
+        <version>0.3.0</version>
       </dependency>
 
       <!-- Testing -->
@@ -491,8 +491,13 @@
       </dependency>
       <dependency>
         <groupId>org.bouncycastle</groupId>
-        <artifactId>bcprov-jdk16</artifactId>
-        <version>1.46</version>
+        <artifactId>bcprov-jdk15on</artifactId>
+        <version>1.57</version>
+      </dependency>
+      <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcpkix-jdk15on</artifactId>
+        <version>1.57</version>
       </dependency>
       <dependency>
         <groupId>commons-io</groupId>

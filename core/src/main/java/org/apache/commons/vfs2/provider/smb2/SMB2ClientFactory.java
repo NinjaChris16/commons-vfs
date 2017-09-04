@@ -18,12 +18,12 @@ public class SMB2ClientFactory {
         try(Connection connection = client.connect(serverName)) {
             AuthenticationContext auth = new AuthenticationContext(userName.substring(userName.indexOf("\\")+1), password.toCharArray(), userName.substring(0, userName.indexOf("\\")));    // Domain is string before the '\' character in the username, username is string after.
             Session session = connection.authenticate(auth);
-            DiskShare share = (DiskShare) session.connectShare(shareName.substring(0, shareName.indexOf("/")));
+            DiskShare share = (DiskShare) session.connectShare(shareName);
             return share;
         } catch(IOException e) {
             throw new FileSystemException(e.getCause());
         } catch(Exception e) {
-            System.out.printf("%s", e.getMessage());
+            System.out.printf("ERR: %s", e.getMessage());
         }
 
         return null;
