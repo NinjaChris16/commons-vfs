@@ -22,7 +22,9 @@ public class SMB2ClientFactory {
             return share;
         } catch(IOException e) {
             throw new FileSystemException(e.getCause());
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            System.out.printf("%s", e.getMessage());
+        }
 
         return null;
     }

@@ -166,7 +166,17 @@
     <dependency>
       <groupId>com.hierynomus</groupId>
       <artifactId>smbj</artifactId>
-      <version>0.2.0</version>
+      <version>0.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcprov-jdk15on</artifactId>
+      <version>1.57</version>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcpkix-jdk15on</artifactId>
+      <version>1.57</version>
     </dependency>
   </dependencies>
 

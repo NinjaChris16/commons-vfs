@@ -1,12 +1,9 @@
 package org.apache.commons.vfs2.provider.smb2;
 
-import com.hierynomus.smbj.SMBClient;
 import com.hierynomus.smbj.share.DiskShare;
 import org.apache.commons.vfs2.*;
 import org.apache.commons.vfs2.provider.AbstractOriginatingFileProvider;
-import org.apache.commons.vfs2.provider.GenericFileName;
 import org.apache.commons.vfs2.util.UserAuthenticatorUtils;
-import org.apache.hadoop.util.StringUtils;
 
 import java.net.URI;
 import java.net.URISyntaxException;

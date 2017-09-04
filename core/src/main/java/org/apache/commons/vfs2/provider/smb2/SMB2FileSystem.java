@@ -1,19 +1,12 @@
 package org.apache.commons.vfs2.provider.smb2;
 
-import com.hierynomus.msdtyp.AccessMask;
-import com.hierynomus.msfscc.FileAttributes;
 import com.hierynomus.mssmb2.SMB2CreateDisposition;
-import com.hierynomus.mssmb2.SMB2CreateOptions;
-import com.hierynomus.mssmb2.SMB2ImpersonationLevel;
 import com.hierynomus.mssmb2.SMB2ShareAccess;
 import com.hierynomus.smbj.share.DiskEntry;
 import com.hierynomus.smbj.share.DiskShare;
-import com.hierynomus.smbj.share.File;
-import com.hierynomus.smbj.share.TreeConnect;
 import org.apache.commons.vfs2.*;
 import org.apache.commons.vfs2.provider.AbstractFileName;
 import org.apache.commons.vfs2.provider.AbstractFileSystem;
-import org.apache.commons.vfs2.provider.GenericFileName;
 
 import java.util.*;
 

@@ -1,18 +1,13 @@
 package org.apache.commons.vfs2.provider.smb2;
 
 import com.hierynomus.msfscc.fileinformation.FileIdBothDirectoryInformation;
-import com.hierynomus.smbj.common.SmbPath;
+import com.hierynomus.protocol.transport.TransportException;
 import com.hierynomus.smbj.share.Directory;
 import com.hierynomus.smbj.share.DiskEntry;
-import com.hierynomus.smbj.share.DiskShare;
 import com.hierynomus.smbj.share.File;
-import com.hierynomus.smbj.transport.TransportException;
-import org.apache.commons.vfs2.FileSystem;
 import org.apache.commons.vfs2.FileSystemException;
 import org.apache.commons.vfs2.FileType;
-import org.apache.commons.vfs2.provider.AbstractFileName;
 import org.apache.commons.vfs2.provider.AbstractFileObject;
-import org.apache.commons.vfs2.provider.local.WindowsFileName;
 
 import java.io.InputStream;
 import java.util.ArrayList;
